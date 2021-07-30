@@ -4,7 +4,7 @@ close all
 
 
 
-n = 5000;
+n = 2000;
 
 H = 200;
 order = 20;

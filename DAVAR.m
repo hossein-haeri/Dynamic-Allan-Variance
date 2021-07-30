@@ -18,11 +18,11 @@ n = numel(x);
 davar = [];
 
 
-win_inx = (p0 - floor(numel(p)/2):p0 + floor(numel(p)/2));
+% win_inx = (p0 - floor(numel(p)/2):p0 + floor(numel(p)/2));
+win_inx = (p0 - floor(numel(p))+1:p0);
 % iterate for each window length m
 for i=1:numel(m_list)
     m = m_list(i);
-    
     % calculate Allan variance accumulatively accross the time
     davar_sum = 0;
     j = 0;
@@ -30,6 +30,7 @@ for i=1:numel(m_list)
         j = j+1;
         % use the definition of the Allan variance to calculate it at the time step k and window length m
         davar_sum = davar_sum + p(j)*(mean(x(k-m+1:k))-mean(x(k-2*m+1:k-m)))^2;
+        
     end
     
     % average the accumulated Allan variance values
